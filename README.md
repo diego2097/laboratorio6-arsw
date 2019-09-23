@@ -66,7 +66,7 @@ Creamos la pagina index.html con todo lo necesario para la estructura basica que
 ```
 Y en el navegador: 
 
-![alt text](https://github.com/luis572/ARSW-lab5/tree/master/img/Estructura-basica.PNG "Estructura basica")
+![alt text](https://github.com/luis572/ARSW-lab5/blob/master/img/Estructura-basica.PNG "Estructura basica")
 
 ### Frontend Logic
 Se agregaron los modulos app.js y apimock.js para realizar la logica de los metodos necesarios para poder visualizar los blueprints y planes de cada autor.
@@ -130,7 +130,7 @@ function generarTable(name,funcion) {
 
 Finalmente el resultado es el siguiente: 
 
-![alt text](https://github.com/luis572/ARSW-lab5/tree/master/img/apimock.PNG "Apimock")
+![alt text](https://github.com/luis572/ARSW-lab5/blob/master/img/apimock.PNG "Apimock")
 
 
 ### Next Week
@@ -157,7 +157,7 @@ function graficarPlano(nameAutor, namePlano){
 ```
 Y en el navegador podemos visualizar nuestro plano graficado en el canvas: 
 
-![alt text](https://github.com/luis572/ARSW-lab5/tree/master/img/canvas.PNG "canvas")
+![alt text](https://github.com/luis572/ARSW-lab5/blob/master/img/canvas.PNG "canvas")
 
 Ahora se agrega el modulo apiclient.js para que en vez de consultar los datos qumeados de apiclient consulte los datos que estan en el API REST. Tuvimos un problema con este modulo y es que para que se puedan desplegar los blueprints hay que clickear dos veces el boton get blueprints. 
 
@@ -186,7 +186,7 @@ var api=apimock
 ```
 Consultado los blueprints del API REST: 
 
-![alt text](https://github.com/luis572/ARSW-lab5/tree/master/img/apirest.PNG "Apirest")
+![alt text](https://github.com/luis572/ARSW-lab5/blob/master/img/apirest.PNG "Apirest")
 
 
 ## Construido en
