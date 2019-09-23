@@ -20,9 +20,7 @@ function getBlueprintsByNameAndAuthor(funcion,name){
 }
 function run() {
 	var nameAutor = $('#autor').val();
-	console.log("llllllllllllllllllllllllll")
 	generarTable(nameAutor,api.getBlueprintsByAuthor(nameAutor,getByAuthor));
-	
 }
 
 
@@ -43,6 +41,7 @@ function graficarPlano(nameAutor, namePlano){
 	$("#blueprintname").text(namePlano)
 	
 }
+
 function generarTable(name,funcion) {
 	$("#cuerpo").html("");
 	var total=0
