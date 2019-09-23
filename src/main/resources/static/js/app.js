@@ -40,6 +40,7 @@ function graficarPlano(nameAutor, namePlano){
 	})
 	ctx.closePath()
 	console.log(getBlueprintsByNameAndAuthor(api.getBlueprintsByAuthor(nameAutor,getBlueprints),namePlano))
+	$("#blueprintname").text(namePlano)
 	
 }
 function generarTable(name,funcion) {
@@ -62,4 +63,7 @@ function generarTable(name,funcion) {
 			total+=f.points
 	});
 	$("#totalPoints").text(total)
+	$("#authorname").text(name+"'s")
+	
+
 }
