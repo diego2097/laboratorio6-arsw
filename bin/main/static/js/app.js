@@ -1,5 +1,8 @@
-function getName(autor) {
-	return autor;
+function getName(funcion) {
+	return funcion.map(function(f){
+		return {name:f.name,points:Object.keys(f.points).length};
+	});
+	
 }
 
 function run() {
@@ -10,7 +13,6 @@ function run() {
 
 
 function generarTable(name,funcion) {
-	
 	$("#cuerpo").html("");
 	var total=0
 	$("#totalPoints").text(total)
@@ -19,11 +21,11 @@ function generarTable(name,funcion) {
 			.append(
 			  `<tr>
 				<td>`+f.name+`</td>
-				<td>`+Object.keys(f.points).length+`</td>
+				<td>`+f.points+`</td>
 				<td>`+f+`</td>
 			  </tr>`
 			);
-			total+=Object.keys(f.points).length
-			$("#totalPoints").text(total)
+			total+=f.points
 	});
+	$("#totalPoints").text(total)
 }
