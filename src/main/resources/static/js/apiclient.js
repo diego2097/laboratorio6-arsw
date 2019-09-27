@@ -6,6 +6,7 @@ apiclient = (function () {
                 $.get(Url+name,function(data){
                     f=data;
                 });
+                console.log(f)
                 return callback(f)
         }
     };
