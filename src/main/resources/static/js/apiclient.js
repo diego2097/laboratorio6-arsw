@@ -8,6 +8,15 @@ apiclient = (function () {
                 });
                 console.log(f)
                 return callback(f)
-        }
+        },
+        setBlueprint: function(author, name, ponit) {
+            $.ajax({
+              url: "/blueprints/" + author + "/" + name + "/",
+              type: "PUT",
+              data: point,
+              contentType: "application/json"
+            });
+          }
     };
+    
 })();
