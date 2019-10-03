@@ -1,8 +1,9 @@
-var api=apiclient
+var api=apimock;
 blueprintOpen = false
 
 var BlueprintsModule = (function(){
-	
+	var plano="";
+	var autor="";
 	var graficarPlano = function(nameAutor,namePlano){
 		blueprintOpen = true;
 		var c = document.getElementById("myCanvas");
@@ -19,6 +20,8 @@ var BlueprintsModule = (function(){
 		ctx.closePath()
 		console.log(getBlueprintsByNameAndAuthor(api.getBlueprintsByAuthor(nameAutor,getBlueprints),namePlano))
 		$("#blueprintname").text(namePlano)
+		plano=namePlano;
+		autor=nameAutor;
 	};
 	
 	var getBlueprints = function(funcion){
@@ -86,7 +89,10 @@ var BlueprintsModule = (function(){
 			var offsettop =  parseInt(getOffset(canvas).top, 10);
 			var x = event.pageX-offsetleft;
 			var y = event.pageY-offsettop;
-			
+			var cordenadas={"x":x,"y":y}
+			console.log("lola")
+			console.log(plano)
+			api.pushPoints(autor,plano,cordenadas,graficarPlano)
 			context.fillRect(event.pageX-offsetleft,event.pageY-offsettop,5,5);
 		}	
 	};
