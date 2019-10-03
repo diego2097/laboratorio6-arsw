@@ -1,9 +1,10 @@
-var api=apimock;
+var api=apiclient;
 blueprintOpen = false
 
 var BlueprintsModule = (function(){
 	var plano="";
 	var autor="";
+	var point=[];
 	var graficarPlano = function(nameAutor,namePlano){
 		blueprintOpen = true;
 		var c = document.getElementById("myCanvas");
@@ -17,6 +18,11 @@ var BlueprintsModule = (function(){
 			ctx.lineTo(f.x,f.y);
 			ctx.stroke();
 		})
+		point.map(function(f){
+			console.log(f.x)
+			ctx.lineTo(f.x,f.y);
+			ctx.stroke();
+		})
 		ctx.closePath()
 		console.log(getBlueprintsByNameAndAuthor(api.getBlueprintsByAuthor(nameAutor,getBlueprints),namePlano))
 		$("#blueprintname").text(namePlano)
@@ -24,10 +30,10 @@ var BlueprintsModule = (function(){
 		autor=nameAutor;
 		$("#cuerpoSaveUpdate").append(
 			`<br>
-			<button type='button' class='btn btn-primary' onclick='BlueprintsModule.graficarPlano()'> 
+			<button type='button' class='btn btn-primary' onclick=''> 
 				save/update
 			</button>
-			<button type='button' class='btn btn-primary' onclick='BlueprintsModule.graficarPlano()'> 
+			<button type='button' class='btn btn-primary' onclick=''> 
 				delete
 			</button>`
 		);
@@ -66,7 +72,7 @@ var BlueprintsModule = (function(){
 				  `<tr>
 					<td>`+f.name+`</td>
 					<td>`+f.points+`</td>`+
-					"<td><form><button type='button' class='btn btn-primary' onclick='BlueprintsModule.graficarPlano( \"" +
+					"<td><form><button type='button' class='btn btn-primary' onclick='BlueprintsModule.limpiar( \"" +
 				  name +
 				  '" , "' +
 				  f.name +
@@ -95,19 +101,22 @@ var BlueprintsModule = (function(){
 		if (blueprintOpen){
 			var canvas = document.getElementById("myCanvas"),
 			context = canvas.getContext("2d");
-	
 			var offsetleft =  parseInt(getOffset(canvas).left, 10);
 			var offsettop =  parseInt(getOffset(canvas).top, 10);
 			var x = event.pageX-offsetleft;
 			var y = event.pageY-offsettop;
 			var cordenadas={"x":x,"y":y}
-			console.log("lola")
-			console.log(plano)
-			api.pushPoints(autor,plano,cordenadas,graficarPlano)
+			point.push(cordenadas)
+			api.rapaintPoints(autor,plano,graficarPlano)
 			context.fillRect(event.pageX-offsetleft,event.pageY-offsettop,5,5);
 		}	
 	};
-	
+
+	var limpiar= function (nombre,nombrep) {
+		ponit=[];
+		graficarPlano(nombre,nombrep)
+	};
+
 	var getOffset = function (obj) {
 	  var offsetLeft = 0;
 	  var offsetTop = 0;
@@ -132,7 +141,8 @@ var BlueprintsModule = (function(){
 	  return {
 		run: run,
 		initMouse: initMouse,
-		graficarPlano: graficarPlano
+		graficarPlano: graficarPlano,
+		limpiar:limpiar
 	  };
 })();
 

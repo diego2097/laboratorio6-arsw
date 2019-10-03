@@ -16,7 +16,16 @@ apiclient = (function () {
               data: point,
               contentType: "application/json"
             });
-          }
+          },
+          rapaintPoints:function(nameAuthor,nameP,callback){
+            callback(
+                nameAuthor,
+                nameP
+            );
+    
+            
+            
+        }
     };
     
 })();

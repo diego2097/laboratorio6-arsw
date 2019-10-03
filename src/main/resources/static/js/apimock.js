@@ -9,12 +9,12 @@ apimock=(function(){
 			);
 		},
 	
-	pushPoints:function(nameAuthor,nameP,cordenadas,callback){
-		mockdata[nameAuthor].map(function(f){
+	rapaintPoints:function(nameAuthor,nameP,cordenadas,callback){
+		/*mockdata[nameAuthor].map(function(f){
 			if(f.name==nameP){
 				f.points.push(cordenadas)
 			}
-		});
+		});*/
 		console.log(mockdata[nameAuthor])
 		callback(
 			nameAuthor,
