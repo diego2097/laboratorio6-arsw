@@ -22,6 +22,11 @@ var BlueprintsModule = (function(){
 		$("#blueprintname").text(namePlano)
 		plano=namePlano;
 		autor=nameAutor;
+		$("#cuerpoSaveUpdate").append(
+			`<button type='button' class='btn btn-primary' onclick='BlueprintsModule.graficarPlano()`
+		);
+
+
 	};
 	
 	var getBlueprints = function(funcion){
