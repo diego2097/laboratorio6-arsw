@@ -1,4 +1,4 @@
-# Laboratorio 1 - ARSW
+# Laboratorio 6 - ARSW
 ## Empezando
 Se debe de clonar el proyecto, para esto utilizaremos el comando git clone. ubíquese la carpeta a guardar el proyecto y escriba el siguiente comando en la terminal:
  
