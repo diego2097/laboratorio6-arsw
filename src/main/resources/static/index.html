@@ -24,6 +24,7 @@
       <h2><i id="authorname"></i> Blueprints:</h2>
     </div>
     <div class="col-md-6">
+      <button type='button' class='btn btn-primary' onclick='BlueprintsModule.newBlueprint()'> create new blueprint</button>
       <h2> Current blueprint:<i id="blueprintname"></i> </h2>
     </div>
   </div>
@@ -41,9 +42,18 @@
 
 
     </div>
-    <div class="col-xl-6" id = "cuerpoSaveUpdate">
+    <div class="col-xl-6" >
       <canvas id="myCanvas" width="500px" height="300px" style="border:1px solid #000000;">
       </canvas>
+      <div id = "cuerpoSaveUpdate" style="visibility: hidden">
+          <br>
+          <button type='button' class='btn btn-primary' onclick='BlueprintsModule.updateBlueprint()'> 
+              save/update
+            </button>
+            <button type='button' class='btn btn-primary' onclick=''> 
+              delete
+            </button>
+      </div>
     </div>
        
   </div>

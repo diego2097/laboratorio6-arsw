@@ -5,6 +5,8 @@ var BlueprintsModule = (function(){
 	var plano="";
 	var autor="";
 	var point=[];
+	var currentBlueprint; 
+
 	var graficarPlano = function(nameAutor,namePlano){
 		blueprintOpen = true;
 		var c = document.getElementById("myCanvas");
@@ -19,7 +21,7 @@ var BlueprintsModule = (function(){
 			ctx.stroke();
 		})
 		point.map(function(f){
-			console.log(f.x)
+			console.log("memoria puntos "+ f.x)
 			ctx.lineTo(f.x,f.y);
 			ctx.stroke();
 		})
@@ -28,16 +30,7 @@ var BlueprintsModule = (function(){
 		$("#blueprintname").text(namePlano)
 		plano=namePlano;
 		autor=nameAutor;
-		$("#cuerpoSaveUpdate").append(
-			`<br>
-			<button type='button' class='btn btn-primary' onclick=''> 
-				save/update
-			</button>
-			<button type='button' class='btn btn-primary' onclick=''> 
-				delete
-			</button>`
-		);
-
+	
 
 	};
 	
@@ -50,6 +43,7 @@ var BlueprintsModule = (function(){
 		funcion.map(function(f){
 			if(f.name==name){
 				points=f.points
+				currentBlueprint = f
 			}
 		});
 		return points;
@@ -72,7 +66,7 @@ var BlueprintsModule = (function(){
 				  `<tr>
 					<td>`+f.name+`</td>
 					<td>`+f.points+`</td>`+
-					"<td><form><button type='button' class='btn btn-primary' onclick='BlueprintsModule.limpiar( \"" +
+					"<td><form><button type='button' class='btn btn-primary' onclick='BlueprintsModule.init_canvas( \"" +
 				  name +
 				  '" , "' +
 				  f.name +
@@ -107,13 +101,25 @@ var BlueprintsModule = (function(){
 			var y = event.pageY-offsettop;
 			var cordenadas={"x":x,"y":y}
 			point.push(cordenadas)
-			api.rapaintPoints(autor,plano,graficarPlano)
+			api.repaintPoints(autor,plano,graficarPlano)
 			context.fillRect(event.pageX-offsetleft,event.pageY-offsettop,5,5);
 		}	
 	};
 
-	var limpiar= function (nombre,nombrep) {
-		ponit=[];
+	var updateBlueprint=  function(){
+		console.log("updating")
+		point.map(function(f){
+			currentBlueprint.points.push(f)
+		});
+		point=[]
+		api.setBlueprint(autor,plano,JSON.stringify(currentBlueprint),run)
+	}
+
+
+	var init_canvas= function (nombre,nombrep) {
+		$("#cuerpoSaveUpdate").css("visibility", "visible");		
+		point=[];
+
 		graficarPlano(nombre,nombrep)
 	};
 
@@ -131,6 +137,13 @@ var BlueprintsModule = (function(){
 	  return {left: offsetLeft, top: offsetTop};
 	};
 
+
+	var newBlueprint = function(){
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");		
+		ctx.clearRect(0, 0, c.width, c.height);
+		graficarPlano("","");
+	}
 	
 	var run = function() {
 		var nameAutor = $('#autor').val();
@@ -142,7 +155,9 @@ var BlueprintsModule = (function(){
 		run: run,
 		initMouse: initMouse,
 		graficarPlano: graficarPlano,
-		limpiar:limpiar
+		init_canvas:init_canvas,
+		updateBlueprint: updateBlueprint,
+		newBlueprint: newBlueprint
 	  };
 })();
 

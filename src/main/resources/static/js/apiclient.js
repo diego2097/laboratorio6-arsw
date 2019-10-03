@@ -9,22 +9,30 @@ apiclient = (function () {
                 console.log(f)
                 return callback(f)
         },
-        setBlueprint: function(author, name, ponit) {
-            $.ajax({
-              url: "/blueprints/" + author + "/" + name + "/",
+        setBlueprint: function(author, plano, bp,callback) {
+            var promise = $.ajax({
+              url: "/blueprints/" + author + "/" + plano + "/",
               type: "PUT",
-              data: point,
+              data: bp,
               contentType: "application/json"
             });
+
+            promise.then(
+                function() {
+                  console.info("OK setBlueprint");
+                  callback()
+                },
+                function() {
+                  console.info("ERROR setBlueprint");
+                }
+              );
           },
-          rapaintPoints:function(nameAuthor,nameP,callback){
+
+          repaintPoints:function(nameAuthor,nameP,callback){
             callback(
                 nameAuthor,
                 nameP
             );
-    
-            
-            
         }
     };
     

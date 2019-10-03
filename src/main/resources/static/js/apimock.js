@@ -9,7 +9,7 @@ apimock=(function(){
 			);
 		},
 	
-	rapaintPoints:function(nameAuthor,nameP,cordenadas,callback){
+	repaintPoints:function(nameAuthor,nameP,cordenadas,callback){
 		/*mockdata[nameAuthor].map(function(f){
 			if(f.name==nameP){
 				f.points.push(cordenadas)
