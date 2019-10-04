@@ -95,6 +95,7 @@ var BlueprintsModule = (function () {
 		});
 		$("#totalPoints").text(total)
 		$("#authorname").text(name + "'s")
+		autor=name;
 	};
 
 	var initMouse = function () {
@@ -143,12 +144,15 @@ var BlueprintsModule = (function () {
 			api.setBlueprint(autor, plano, JSON.stringify(currentBlueprint), run)
 
 		}else{
+			autor=$('#autor').val();
+			plano=$("#blueprintname").text();
+
 			var data={
 				"author":autor,
 				"points":point,
 				"name":plano
 			}
-			console.log(data)
+			
 			api.addBlueprint( JSON.stringify(data))
 		}
 
@@ -194,6 +198,7 @@ var BlueprintsModule = (function () {
 		$("#blueprintname").text(nombre)
 		plano=nombre;
 		autor= $('#autor').val();
+		console.log(autor)
 		blueprintOpen = true;
 		nuevo = true;
 	}
