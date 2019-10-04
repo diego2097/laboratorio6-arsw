@@ -9,7 +9,7 @@ var BlueprintsModule = (function () {
 	var points = [];
 	var nuevo = false;
 	var graficarPlano = function (funcion) {
-
+		$("#crearBlueprint").css("visibility", "visible");
 		blueprintOpen = true;
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
@@ -199,6 +199,7 @@ var BlueprintsModule = (function () {
 		api.deleteBlueprint(autor,plano,refrescar)
 	}
 	var newBlueprint = function () {
+		$("#cuerpoSaveUpdate").css("visibility", "visible");
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
 		ctx.clearRect(0, 0, c.width, c.height);

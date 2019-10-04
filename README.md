@@ -33,7 +33,7 @@ Agregamos un mouse listener al canvas para que detecte los clicks.
 Los puntos son agregados en memoria por el momento, solo son agregados al api hasta cuando se confirman 
 los cambios con save/update
 
-![alt text](https://github.com/diego2097/laboratorio6-arsw/blob/master/img/puntos.PNG "puntos")
+![alt text](https://github.com/luis572/ARSW-lab5/blob/master/img/puntos.PNG "puntos")
 
 ```javascript
 	var updateBlueprint=  function(){
@@ -45,7 +45,8 @@ los cambios con save/update
 	}
 ```
 
-Agregamos el boton crear que pide el nombre de un blueprint que se desee crear 
+Agregamos el boton crear que pide el nombre de un blueprint que se desee crear
+ 
 ```javascript
 	var updateBlueprint = function () {
 		if (!nuevo) {
@@ -70,9 +71,9 @@ Agregamos el boton crear que pide el nombre de un blueprint que se desee crear
 		}
 	}
 ```
-![alt text](https://github.com/diego2097/laboratorio6-arsw/blob/master/img/agregarBlueprint.PNG "agregar")
+![alt text](https://github.com/luis572/ARSW-lab5/blob/master/img/agregarBlueprint.PNG "agregar")
 
-![alt text](https://github.com/diego2097/laboratorio6-arsw/blob/master/img/newBlueprint.PNG "newBlueprint")
+![alt text](https://github.com/luis572/ARSW-lab5/blob/master/img/newBlueprint.PNG "newBlueprint")
 
 
 
