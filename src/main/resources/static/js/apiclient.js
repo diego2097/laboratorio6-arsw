@@ -8,6 +8,9 @@ apiclient = (function () {
         success: function (result) {
           callback(name, result);
         },
+        error:function (result) {
+          alert("No se a encontrado el Autor")
+        }
       });
     },
     getBlueprintsByNameAndAuthor: function (author, name, callback) {
@@ -55,6 +58,24 @@ apiclient = (function () {
         }
       );
     },
+    deleteBlueprint: function (author,plano, callback) {
+      var promise = $.ajax({
+        url: "/blueprints/" + author + "/" + plano + "/",
+        type: "DELETE",
+        contentType: "application/json"
+      });
+
+      promise.then(
+        function () {
+          console.info("OK setBlueprint");
+          callback(author)
+        },
+        function () {
+          console.info("ERROR setBlueprint");
+        }
+      );
+    },
+    
     repaintPoints: function (nameAuthor, nameP, callback) {
       callback();
     }

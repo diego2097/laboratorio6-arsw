@@ -155,6 +155,7 @@ var BlueprintsModule = (function () {
 			
 			api.addBlueprint( JSON.stringify(data))
 		}
+
 	}
 
 
@@ -183,8 +184,20 @@ var BlueprintsModule = (function () {
 		} while (obj = obj.offsetParent);
 		return { left: offsetLeft, top: offsetTop };
 	};
-
-
+	var refrescar=function(nameAutor){
+		$("#blueprintname").text("")
+		plano=$("#blueprintname").text();
+		var c = document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.clearRect(0, 0, c.width, c.height);
+		api.getBlueprintsByAuthor(nameAutor, generarTable);
+	}
+	var deleteBluprint=function(){
+		autor=$('#autor').val();
+		plano=$("#blueprintname").text();
+		console.log(autor,plano)
+		api.deleteBlueprint(autor,plano,refrescar)
+	}
 	var newBlueprint = function () {
 		var c = document.getElementById("myCanvas");
 		var ctx = c.getContext("2d");
@@ -214,7 +227,8 @@ var BlueprintsModule = (function () {
 		graficarPlano: graficarPlano,
 		init_canvas: init_canvas,
 		updateBlueprint: updateBlueprint,
-		newBlueprint: newBlueprint
+		newBlueprint: newBlueprint,
+		deleteBluprint:deleteBluprint
 	};
 })();
 
