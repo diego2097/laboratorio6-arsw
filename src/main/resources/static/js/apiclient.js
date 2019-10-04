@@ -37,7 +37,24 @@ apiclient = (function () {
         }
       );
     },
+    addBlueprint: function (bp, callback) {
+      var promise = $.ajax({
+        url: "/blueprints/",
+        type: "POST",
+        data: bp,
+        contentType: "application/json"
+      });
 
+      promise.then(
+        function () {
+          console.info("OK setBlueprint");
+          callback()
+        },
+        function () {
+          console.info("ERROR setBlueprint");
+        }
+      );
+    },
     repaintPoints: function (nameAuthor, nameP, callback) {
       callback();
     }
