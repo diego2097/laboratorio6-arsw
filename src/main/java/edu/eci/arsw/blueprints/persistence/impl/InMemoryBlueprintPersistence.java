@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
  *
  * @author hcadavid
  */
-
 @Service
 public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
 
@@ -29,23 +28,46 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
     public InMemoryBlueprintPersistence() {
 
         // load stub data
-        Point[] pts = new Point[] { new Point(140, 140), new Point(115, 115) };
+        Point[] pts = new Point[]{new Point(140, 140), new Point(115, 115)};
         Blueprint bp = new Blueprint("_authorname_", "_bpname_ ", pts);
         blueprints.put(new Tuple<>(bp.getAuthor(), bp.getName()), bp);
 
-        Point[] ptsJp = new Point[] { new Point(88, 45), new Point(39, 64), new Point(1254, 546), new Point(7, 8),
-                new Point(4, 2), new Point(11, 22) };
+        Point[] ptsJp = new Point[]{new Point(88, 45), new Point(39, 64), new Point(1254, 546), new Point(7, 8),
+            new Point(4, 2), new Point(11, 22)};
         Blueprint bpJp = new Blueprint("author1", "Blueprint_a", ptsJp);
         blueprints.put(new Tuple<>(bpJp.getAuthor(), bpJp.getName()), bpJp);
 
-        Point[] ptsSt = new Point[] { new Point(0, 1), new Point(1, 0) };
+        Point[] ptsSt = new Point[]{new Point(0, 1), new Point(1, 0)};
         Blueprint bpSt = new Blueprint("author2", "Blueprint_b", ptsSt);
         blueprints.put(new Tuple<>(bpSt.getAuthor(), bpSt.getName()), bpSt);
 
-        Point[] ptsSt2 = new Point[] { new Point(50, 1), new Point(1, 05) };
+        Point[] ptsSt2 = new Point[]{new Point(50, 1), new Point(1, 05)};
         Blueprint bpSt2 = new Blueprint("author1", "School_blueprint", ptsSt2);
         blueprints.put(new Tuple<>(bpSt2.getAuthor(), bpSt2.getName()), bpSt2);
 
+        Point[] ptsSt3 = new Point[]{new Point(48, 1), new Point(1, 505), new Point(122, 505)};
+        Blueprint bpSt3 = new Blueprint("author2", "School_blueprint", ptsSt3);
+        blueprints.put(new Tuple<>(bpSt3.getAuthor(), bpSt3.getName()), bpSt3);
+
+        Point[] ptsSt4 = new Point[]{new Point(33, 1), new Point(1, 75),new Point(5, 1)};
+        Blueprint bpSt4 = new Blueprint("author1", "School_blueprint", ptsSt4);
+        blueprints.put(new Tuple<>(bpSt4.getAuthor(), bpSt4.getName()), bpSt4);
+        
+        Point[] ptsSt5 = new Point[]{new Point(50, 1), new Point(1, 05)};
+        Blueprint bpSt5 = new Blueprint("author2", "School_blueprint", ptsSt5);
+        blueprints.put(new Tuple<>(bpSt5.getAuthor(), bpSt5.getName()), bpSt5);
+
+        Point[] ptsSt6 = new Point[]{new Point(520, 1), new Point(1, 05)};
+        Blueprint bpSt6 = new Blueprint("author1", "plan", ptsSt6);
+        blueprints.put(new Tuple<>(bpSt6.getAuthor(), bpSt6.getName()), bpSt6);
+
+        Point[] ptsSt7 = new Point[]{new Point(50, 100), new Point(100, 105)};
+        Blueprint bpSt7 = new Blueprint("author2", "School", ptsSt7);
+        blueprints.put(new Tuple<>(bpSt7.getAuthor(), bpSt7.getName()), bpSt7);
+
+        Point[] ptsSt9 = new Point[]{new Point(24, 1), new Point(5, 5)};
+        Blueprint bpSt9 = new Blueprint("author2", "Schoo", ptsSt2);
+        blueprints.put(new Tuple<>(bpSt9.getAuthor(), bpSt9.getName()), bpSt9);
     }
 
     @Override
@@ -108,9 +130,9 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
 
     @Override
     public void deleteBlueprints(String author, String name) throws BlueprintNotFoundException {
-        if(blueprints.containsKey(new Tuple<>(author, name))){
+        if (blueprints.containsKey(new Tuple<>(author, name))) {
             blueprints.remove(new Tuple<>(author, name));
-        }        
+        }
     }
- 
+
 }
