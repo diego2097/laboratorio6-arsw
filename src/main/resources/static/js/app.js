@@ -155,7 +155,6 @@ var BlueprintsModule = (function () {
 			
 			api.addBlueprint( JSON.stringify(data))
 		}
-
 	}
 
 
